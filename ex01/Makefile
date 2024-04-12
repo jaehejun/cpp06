@@ -2,13 +2,12 @@ NAME	=	Serializer
 
 CXX		=	c++
 
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -O0
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 SRCS		=	main.cpp\
 				Serializer.cpp\
 				
 INCS		=	Serializer.hpp\
-				Data.hpp\
 
 OBJS	=	$(SRCS:.cpp=.o)
 
