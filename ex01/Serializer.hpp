@@ -3,7 +3,9 @@
 
 struct Data
 {
-	int data;
+	char* cPtr;
+	char character;
+	int number;
 };
 
 typedef unsigned long uintptr_t;
