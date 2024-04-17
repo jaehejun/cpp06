@@ -21,6 +21,7 @@ class ScalarConverter
             std::cout << "float: " << static_cast<float>(c) << std::endl;
             std::cout << "double: " << static_cast<double>(c) << std::endl;
         }
+
         else if (literal.find('.') == std::string::npos && literal.find('f') == std::string::npos)
         {
             // int 리터럴 처리
@@ -41,6 +42,7 @@ class ScalarConverter
                 std::cout << "Conversion error" << std::endl;
             }
         }
+
         else if (literal.back() == 'f')
         {
             // float 리터럴 처리
@@ -57,6 +59,7 @@ class ScalarConverter
                 std::cout << "Conversion error" << std::endl;
             }
         }
+        
         else
         {
             // double 리터럴 처리
