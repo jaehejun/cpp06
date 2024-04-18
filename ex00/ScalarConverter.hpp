@@ -3,9 +3,10 @@
 
 #include <string>
 #include <iostream>
-#include <limits>
-#include <cctype>
-#include <sstream>
+#include <limits> // numeric_limits<type>
+#include <cctype> //isalnum, isalpha, isdigit, isprint
+#include <cstdlib> // atoi
+#include <sstream> //stringstream
 
 class ScalarConverter
 {
@@ -18,4 +19,4 @@ class ScalarConverter
 		static void convert(const std::string &literal);
 };
 
-#endif 
+#endif
