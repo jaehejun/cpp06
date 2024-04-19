@@ -138,3 +138,5 @@ void ScalarConverter::convert(const std::string &literal) //"42"ㅇㅐ느ㄴ 뭔
 
 		//ss.clear();
 		//ss.str(literal);
+		//
+//std::cout << std::fixed << setprecision(1)
