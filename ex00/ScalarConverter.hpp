@@ -4,9 +4,9 @@
 #include <string>
 #include <iostream>
 #include <limits> // numeric_limits<type>
-#include <cctype> //isalnum, isalpha, isdigit, isprint
-#include <cstdlib> // atoi
-#include <sstream> //stringstream
+#include <cctype> // isprint
+#include <sstream> // istringstream
+#include <iomanip> // std::fixed, std::setprecision
 
 class ScalarConverter
 {
