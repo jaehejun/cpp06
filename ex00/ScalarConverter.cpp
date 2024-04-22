@@ -61,12 +61,12 @@ void ScalarConverter::convert(const std::string &literal)
 	else
 	{
 		std::istringstream ss(literal);
-		char c;
+		//char c;
 		int i;
 		float f;
 		double d;
 
-//소수점 없으면 -> int
+//소수점, f 없으면 -> int
 		if (literal.find('.') == std::string::npos && literal.find('f') == std::string::npos && (!(ss >> i).fail()))
 		{
 			if (isprint(i))
@@ -91,26 +91,22 @@ void ScalarConverter::convert(const std::string &literal)
 			ss.str(literal.substr(0, literal.length() - 1));
 			if (!(ss >> f).fail())
 			{
-				c = static_cast<char>(f);
 				if (f >= std::numeric_limits<char>::min() && f <= std::numeric_limits<char>::max())
 				{
-					if ((f > 0 && c < 0) || (f < 0 && c > 0))
-						std::cout << "char: impossible" << std::endl;
-					else if (isprint(c))
-						std::cout << "char: '" << c << "'" << std::endl;
+					if (isprint(static_cast<char>(f)))
+						std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
 					else
 						std::cout << "char: Non displayable" << std::endl;
 				}
 				else
 					std::cout << "char: impossible" << std::endl;
 
-				i = static_cast<int>(f);
 				if (d >= std::numeric_limits<int>::min() && d <= std::numeric_limits<int>::max())
 				{
-					if ((f > 0 && i < 0) || (f < 0 && i > 0))
-						std::cout << "int: impossible" << std::endl;
+					if ((f > 0 && static_cast<int>(f) > 0) || (f < 0 && static_cast<int>(f) < 0))
+						std::cout << "int: " << static_cast<int>(f) << std::endl;
 					else
-						std::cout << "int: " << i << std::endl;
+						std::cout << "int: impossible" << std::endl;
 				}
 				else
 					std::cout << "int: impossible" << std::endl;
@@ -119,39 +115,6 @@ void ScalarConverter::convert(const std::string &literal)
 				std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(f) << std::endl;
 				return ;
 			}
-		}
-
-//소수점 !f -> double
-		else if (literal.find('.') != std::string::npos && literal.find('f') == std::string::npos && !(ss >> d).fail())
-		{
-			c = static_cast<char>(d);
-			if (d >= std::numeric_limits<char>::min() && d <= std::numeric_limits<char>::max())
-			{
-				if ((d > 0 && c < 0) || (d < 0 && c > 0))
-					std::cout << "char: impossible" << std::endl;
-				else if (isprint(c))
-					std::cout << "char: '" << c << "'" << std::endl;
-				else
-					std::cout << "char: Non displayable" << std::endl;
-			}
-			else
-				std::cout << "char: impossible" << std::endl;
-
-			i = static_cast<int>(d);
-			if (d >= std::numeric_limits<int>::min() && d <= std::numeric_limits<int>::max())
-				std::cout << "int: " << i << std::endl;
-			else
-				std::cout << "int: impossible" << std::endl;
-
-// float 음수일 때 impossible 			
-			f = static_cast<float>(d);
-			if (d >= std::numeric_limits<float>::min() && d <= std::numeric_limits<float>::max())
-				std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
-			else
-				std::cout << "float: impossible" << std::endl;
-
-			std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
-			return ;
 		}
 		std::cout << "char : impossible" << std::endl;
 		std::cout << "int : impossible" << std::endl;
