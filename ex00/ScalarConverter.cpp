@@ -116,6 +116,34 @@ void ScalarConverter::convert(const std::string &literal)
 				return ;
 			}
 		}
+
+//소수점, !f -> double
+		else if (literal.find('.') != std::string::npos && literal.find('f') == std::string::npos && (!(ss >> d).fail()))
+		{
+			if (d >= std::numeric_limits<char>::min() && d <= std::numeric_limits<char>::max())
+			{
+				if (isprint(static_cast<char>(d)))
+					std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
+				else
+					std::cout << "char: Non displayable" << std::endl;
+			}
+			else
+				std::cout << "char: impossible" << std::endl;
+
+			if (d >= std::numeric_limits<int>::min() && d <= std::numeric_limits<int>::max())
+				std::cout << "int: " << static_cast<int>(d) << std::endl;
+			else
+				std::cout << "int: impossible" << std::endl;
+			
+			if (d >= -std::numeric_limits<float>::max() && d <= std::numeric_limits<float>::max())
+				std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
+			else
+				std::cout << "float: impossible" << std::endl;
+
+			std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+			return ;
+		}
+
 		std::cout << "char : impossible" << std::endl;
 		std::cout << "int : impossible" << std::endl;
 		std::cout << "float : impossible" << std::endl;

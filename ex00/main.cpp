@@ -12,5 +12,3 @@ int main(int argc, char **argv)
 
 	return 0;
 }
-
-// char, int, float, double의 범위도 고려해야함?
